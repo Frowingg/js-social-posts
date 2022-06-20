@@ -1,7 +1,11 @@
 const postContainer = document.getElementById('container');
+const btnLike = document.querySelectorAll('js-like-button');
+const counterLIke = document.getElementById('like-counter-1');
+let j = 0;
 
-const names = ['Angel Garrison','Thomas Johnson','Mr. Douglas Shaw','Tyler Gray','William Hart',
-               'Joseph Cuevas','Kevin Morgan','Joseph Olson','Shannon Parks','Charlotte Lucas']
+const names = [['Angel Garrison','A.G.'],['Thomas Johnson', 'T.J.'],['Mr. Douglas Shaw', 'D.S.'],['Tyler Gray','T.G.'],
+               ['William Hart', 'W.H']  ,['Joseph Cuevas','J.C']   ,['Kevin Morgan','K.M']    ,['Joseph Olson','J.O'],
+               ['Shannon Parks','S.P.'] ,['Charlotte Lucas','C.L']]
 
 const postPics = ['https://i.picsum.photos/id/184/300/300.jpg?hmac=vhW7YQcLmc_QysIuIuS8uSu6lbXS4Dw9btPbw2cQn90',
                    null,
@@ -14,14 +18,14 @@ const postPics = ['https://i.picsum.photos/id/184/300/300.jpg?hmac=vhW7YQcLmc_Qy
                    null,
                   'https://i.picsum.photos/id/1073/300/300.jpg?hmac=wa-RILopuOVt6raNQBFfaUFmlx_4A1fUwzlwWkIGk1g',] 
 
-const profilePics = ['https://i.picsum.photos/id/184/300/300.jpg?hmac=vhW7YQcLmc_QysIuIuS8uSu6lbXS4Dw9btPbw2cQn90',
+const profilePics = [null,
                      'https://i.picsum.photos/id/915/300/300.jpg?hmac=Zelq3qOGZXPxfFP38dahzBCpAP8llGrGtQtTNI15wPg',
                      'https://i.picsum.photos/id/1008/300/300.jpg?hmac=5xk7FVRQVS5upnpXga93D7jFjybKWMdMSXPBSfcoK8Q',
                      'https://i.picsum.photos/id/320/300/300.jpg?hmac=Ro-_JH-iriuI8r9qjts__9GxeEuFk3okOh9c3G32eZI',
-                     'https://i.picsum.photos/id/824/300/300.jpg?hmac=kIWcLr0RPi2ZRIEvyq0jKoiPhfU5ixYeEy8206NoZGQ',
+                     null,
                      'https://i.picsum.photos/id/990/300/300.jpg?hmac=RBbMa6Fhp5W0gv722LkKlqWBk77H6wjLg1EeEM2o354',
                      'https://i.picsum.photos/id/626/300/300.jpg?hmac=8CBe2hb9zx8fCum9bqcOO3K1zrWe-91QrW297fjoG70',
-                     'https://i.picsum.photos/id/264/300/300.jpg?hmac=kamEIrwlWwTOX05RMg5JxRzYCY8XA0DQ9GhZWsoDhV0',
+                     null,
                      'https://i.picsum.photos/id/816/300/300.jpg?hmac=L1b8IFOLJKrD9kUMjhcXxsAyAr-bRVZPfjU7evxX16A',
                      'https://i.picsum.photos/id/1073/300/300.jpg?hmac=wa-RILopuOVt6raNQBFfaUFmlx_4A1fUwzlwWkIGk1g',] 
 
@@ -34,25 +38,17 @@ function createDate() {
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
-// const posts = [
-//     {
-//         id: null,
-//         name: null,
-//         profilePic: null,
-//         date: null,
-//         txt: null,
-//         postPic: null
-//     }
-// ];
 
 for(i=0; i<10; i++) {
+    j++
+    profilePic = profilePics[i] === null ? names[i][1] : profilePics[i];
     postPic = postPics[i] === null ? '' : `${postPics[i]}`;
-    postContainer.innerHTML += `
-    <div class="post">
+    post = `
+        <div id='post${j}' class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        <img class="profile-pic" src="${profilePics[i]}" alt="${names[i]}">                    
+                        <img class="profile-pic" src="${profilePic}" alt="${names[i]}">                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${names[i]}</div>
@@ -77,6 +73,15 @@ for(i=0; i<10; i++) {
                     </div>
                 </div> 
             </div>            
-        </div>
-    `
+        </div>` 
+    console.log(post)
+    postContainer.innerHTML += post;
 }
+
+btnLike.addEventListener('click', addLike) 
+
+function addLike() {
+    btnLike.style.color = '#023047';
+    counterLIke.innerHTML +=1;
+};
+
