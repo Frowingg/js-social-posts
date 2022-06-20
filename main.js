@@ -99,6 +99,7 @@ for(i=0; i<info.length; i++) {
         </div>
     `   
     postContainer.innerHTML += post;
+    console.log(post)
 }
 
 function isolateInizial(words) {
