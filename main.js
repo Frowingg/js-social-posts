@@ -1,5 +1,4 @@
 const postContainer = document.getElementById('container');
-const counterLIke = document.getElementById('like-counter-1');
 
 const info = [
     {
@@ -99,7 +98,7 @@ for(i=0; i<info.length; i++) {
         </div>
     `   
     postContainer.innerHTML += post;
-    console.log(post)
+    // console.log(post)
 }
 
 function isolateInizial(words) {
@@ -108,14 +107,11 @@ function isolateInizial(words) {
 }
 
 const btnsLike = document.querySelectorAll('.js-like-button');
-console.log(btnsLike);
 
-btnsLike[0].addEventListener('click', addLike); 
-
-
-
-// function addLike() {
-//     btnLike[0].style.color = '#023047';
-//     // counterLIke.innerHTML +=1;
-// };
-
+for(i=0; i<btnsLike.length; i++) {
+    btnsLike[i].addEventListener('click',
+    function() {
+        this.classList.toggle('clicked')
+    }    
+    );
+}
