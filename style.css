@@ -110,9 +110,6 @@ h1 {
     text-decoration: none;
     color: #404040;
 }
-.clicked{
-    color: #023047;
-}
 
 .like-button:not(.like-button--liked):hover {
     background-color: #e3e3e3

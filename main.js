@@ -1,33 +1,50 @@
 const postContainer = document.getElementById('container');
-const btnLike = document.querySelectorAll('js-like-button');
 const counterLIke = document.getElementById('like-counter-1');
-let j = 0;
 
-const names = [['Angel Garrison','A.G.'],['Thomas Johnson', 'T.J.'],['Mr. Douglas Shaw', 'D.S.'],['Tyler Gray','T.G.'],
-               ['William Hart', 'W.H']  ,['Joseph Cuevas','J.C']   ,['Kevin Morgan','K.M']    ,['Joseph Olson','J.O'],
-               ['Shannon Parks','S.P.'] ,['Charlotte Lucas','C.L']]
-
-const postPics = ['https://i.picsum.photos/id/184/300/300.jpg?hmac=vhW7YQcLmc_QysIuIuS8uSu6lbXS4Dw9btPbw2cQn90',
-                   null,
-                  'https://i.picsum.photos/id/1008/300/300.jpg?hmac=5xk7FVRQVS5upnpXga93D7jFjybKWMdMSXPBSfcoK8Q',
-                  'https://i.picsum.photos/id/320/300/300.jpg?hmac=Ro-_JH-iriuI8r9qjts__9GxeEuFk3okOh9c3G32eZI',
-                   null,
-                  'https://i.picsum.photos/id/990/300/300.jpg?hmac=RBbMa6Fhp5W0gv722LkKlqWBk77H6wjLg1EeEM2o354',
-                  'https://i.picsum.photos/id/626/300/300.jpg?hmac=8CBe2hb9zx8fCum9bqcOO3K1zrWe-91QrW297fjoG70',
-                  'https://i.picsum.photos/id/264/300/300.jpg?hmac=kamEIrwlWwTOX05RMg5JxRzYCY8XA0DQ9GhZWsoDhV0',
-                   null,
-                  'https://i.picsum.photos/id/1073/300/300.jpg?hmac=wa-RILopuOVt6raNQBFfaUFmlx_4A1fUwzlwWkIGk1g',] 
-
-const profilePics = [null,
-                     'https://i.picsum.photos/id/915/300/300.jpg?hmac=Zelq3qOGZXPxfFP38dahzBCpAP8llGrGtQtTNI15wPg',
-                     'https://i.picsum.photos/id/1008/300/300.jpg?hmac=5xk7FVRQVS5upnpXga93D7jFjybKWMdMSXPBSfcoK8Q',
-                     'https://i.picsum.photos/id/320/300/300.jpg?hmac=Ro-_JH-iriuI8r9qjts__9GxeEuFk3okOh9c3G32eZI',
-                     null,
-                     'https://i.picsum.photos/id/990/300/300.jpg?hmac=RBbMa6Fhp5W0gv722LkKlqWBk77H6wjLg1EeEM2o354',
-                     'https://i.picsum.photos/id/626/300/300.jpg?hmac=8CBe2hb9zx8fCum9bqcOO3K1zrWe-91QrW297fjoG70',
-                     null,
-                     'https://i.picsum.photos/id/816/300/300.jpg?hmac=L1b8IFOLJKrD9kUMjhcXxsAyAr-bRVZPfjU7evxX16A',
-                     'https://i.picsum.photos/id/1073/300/300.jpg?hmac=wa-RILopuOVt6raNQBFfaUFmlx_4A1fUwzlwWkIGk1g',] 
+const info = [
+    {
+        id : 1,
+        name : 'Angel Garrison',
+        postPic : 'https://i.picsum.photos/id/524/300/300.jpg?hmac=MpxUkv6gcBsbfdS64thmQBCSgpyfNIXq2Y8_Gx3SupA',
+        profilePic: null
+    },
+    {
+        id: 2,
+        name: 'Thomas Johnson',
+        postPic: null,
+        profilePic: 'https://i.picsum.photos/id/915/300/300.jpg?hmac=Zelq3qOGZXPxfFP38dahzBCpAP8llGrGtQtTNI15wPg'
+    },
+    {
+        id : 3,
+        name : 'Douglas Shaw',
+        postPic : 'https://i.picsum.photos/id/1008/300/300.jpg?hmac=5xk7FVRQVS5upnpXga93D7jFjybKWMdMSXPBSfcoK8Q',
+        profilePic: 'https://i.picsum.photos/id/203/300/300.jpg?hmac=6IV-xNj_b0zmc0InlHbs23VYvUky2xCitu-hYsGr1wo'
+    },
+    {
+        id: 4,
+        name: 'Carlo Bologna',
+        postPic: null,
+        profilePic: null
+    },
+    {
+        id: 5,
+        name: 'Tyler Gray',
+        postPic: 'https://i.picsum.photos/id/13/300/300.jpg?hmac=KpKrVHSxw7oTYqaH6Go7ulaMqAocY3zzej1sqIi6fRQ',
+        profilePic: 'https://i.picsum.photos/id/162/300/300.jpg?hmac=YYwB3vsUblmGV6TR8Jrt46RA6O7v3rhcMTT3iUFC7LQ'
+    },
+    {
+        id: 6,
+        name: 'William Hart',
+        postPic: null,
+        profilePic: 'https://i.picsum.photos/id/816/300/300.jpg?hmac=L1b8IFOLJKrD9kUMjhcXxsAyAr-bRVZPfjU7evxX16A'
+    },
+    {
+        id: 7,
+        name: 'Joseph Cuevas',
+        postPic: 'https://i.picsum.photos/id/798/300/300.jpg?hmac=ETO_5YWlif6jmti0UsKJ0xhQr5WgGEKvLc5jTYjgPk4',
+        profilePic:  'https://i.picsum.photos/id/1073/300/300.jpg?hmac=wa-RILopuOVt6raNQBFfaUFmlx_4A1fUwzlwWkIGk1g'
+    }
+]
 
 function createDate() {
     month = Math.floor(Math.random() * (12 - 1 + 1) ) + 1;
@@ -39,27 +56,33 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-for(i=0; i<10; i++) {
-    j++
-    profilePic = profilePics[i] === null ? names[i][1] : profilePics[i];
-    postPic = postPics[i] === null ? '' : `${postPics[i]}`;
+for(i=0; i<info.length; i++) {
+    // POST PICTURE
+    postPicture = info[i].postPic === null ? '' : `
+    <div class="post__image">
+        <img src="${info[i].postPic}" alt="">
+    </div>`;
+
+    // PROFILE PICTURE
+    profilePicture = info[i].profilePic === null ? `${isolateInizial(info[i].name)}` : `
+    <div class="post-meta__icon">
+        <img class="profile-pic" src="${info[i].profilePic}" alt="${info[i].name}">                    
+    </div>
+    `
+    // POST
     post = `
-        <div id='post${j}' class="post">
+    <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
-                    <div class="post-meta__icon">
-                        <img class="profile-pic" src="${profilePic}" alt="${names[i]}">                    
-                    </div>
+                    ${profilePicture}
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${names[i]}</div>
+                        <div class="post-meta__author">${info[i].name}</div>
                         <div class="post-meta__time">${createDate()}</div>
                     </div>                    
                 </div>
             </div>
             <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
-            <div class="post__image">
-            <img src="${postPic}" alt="${postPics[i]}">
-            </div>
+            ${postPicture}
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
@@ -73,15 +96,25 @@ for(i=0; i<10; i++) {
                     </div>
                 </div> 
             </div>            
-        </div>` 
-    console.log(post)
+        </div>
+    `   
     postContainer.innerHTML += post;
 }
 
-btnLike.addEventListener('click', addLike) 
+function isolateInizial(words) {
+    word = words.split(' ')
+    return `${word[0][0]}.${word[1][0]}.`
+}
 
-function addLike() {
-    btnLike.style.color = '#023047';
-    counterLIke.innerHTML +=1;
-};
+const btnsLike = document.querySelectorAll('.js-like-button');
+console.log(btnsLike);
+
+btnsLike[0].addEventListener('click', addLike); 
+
+
+
+// function addLike() {
+//     btnLike[0].style.color = '#023047';
+//     // counterLIke.innerHTML +=1;
+// };
 
